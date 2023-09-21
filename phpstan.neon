@@ -1,0 +1,12 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    paths:
+        - app
+    level: 9
+
+    ignoreErrors:
+        - '#While loop condition is always true.#'
+
+    excludePaths:

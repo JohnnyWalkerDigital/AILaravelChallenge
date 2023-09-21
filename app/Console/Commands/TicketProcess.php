@@ -34,7 +34,7 @@ class TicketProcess extends Command
 
         // This is a very odd requirement and I wouldn't normally do this
         // Ideally this command would be repeated through the scheduler
-        // (This has been set up in Kernal.php)
+        // (This has been set up in Kernel.php)
         if ($repeat) {
             $this->comment('Repeating every ' . $sleepSeconds . ' seconds...');
 

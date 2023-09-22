@@ -25,17 +25,22 @@ class TicketsController extends Controller
 
     public function getTicketsByUser(Request $request): LengthAwarePaginator
     {
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->firstOrFail();
         return Ticket::where('user_id', $user->id)->oldest()->paginate(5);
     }
 
+    /**
+     * Get selection of stats.
+     *
+     * @return array{totalTickets: int, totalUnprocessedTickets: int, userWithMostTickets: User|null, latestProcessedTicketTime: mixed}
+     */
     public function getStats(): array
     {
         return [
             'totalTickets' => Ticket::count(),
             'totalUnprocessedTickets' => Ticket::unprocessed()->count(),
             'userWithMostTickets' => TicketService::getUserWithMostTickets(),
-            'latestProcessedTicketTime' => Ticket::processed()->latest()->pluck('updated_at')->first()
+            'latestProcessedTicketTime' => Ticket::processed()->latest()->pluck('updated_at')->firstOrFail()
         ];
     }
 }

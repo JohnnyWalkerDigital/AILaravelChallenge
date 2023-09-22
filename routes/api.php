@@ -4,7 +4,7 @@ use App\Ticket;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\API\TicketsController;
+use App\Http\Controllers\API\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +28,8 @@ Route::get('/health', function () {
 
 // All /api/tickets routes
 Route::prefix('tickets')->controller(TicketsController::class)->group(function () {
-    Route::get('/unprocessed','indexUnprocessed');
-    Route::get('/processed','indexProcessed');
-    Route::get('/user/{email}','getTicketsByUser');
-    Route::get('/stats','getStats');
+    Route::get('/unprocessed', 'indexUnprocessed');
+    Route::get('/processed', 'indexProcessed');
+    Route::get('/user/{email}', 'getTicketsByUser');
+    Route::get('/stats', 'getStats');
 });

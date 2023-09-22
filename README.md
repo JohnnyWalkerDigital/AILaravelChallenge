@@ -8,6 +8,8 @@ Ensure all required packages have been installed:
  - `composer install`
  - `npm install`
 
+Then run by using `php artisan serve` or [Laravel Valet](https://laravel.com/docs/10.x/valet).
+
 Tests can be run and code assessed with PHP Sniffer and Larastan by running:
  - `composer check`
 

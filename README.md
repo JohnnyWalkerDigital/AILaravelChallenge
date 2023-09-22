@@ -1,4 +1,4 @@
-## AddIntel Laravel Challenge
+## AI Laravel Challenge
 
 Johnny Walker ([johnny@johnnywalkerdigital.com](mailto:johnny@johnnywalkerdigital.com))
 

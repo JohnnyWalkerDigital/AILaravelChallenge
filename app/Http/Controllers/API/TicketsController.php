@@ -6,10 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Services\TicketService;
 use App\Ticket;
 use App\User;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
 
 class TicketsController extends Controller
 {

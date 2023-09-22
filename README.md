@@ -8,51 +8,29 @@ Ensure all required packages have been installed:
  - `composer install`
  - `npm install`
 
-Code can be assessed with PHP Sniffer and Larastan by running:
+Tests can be run and code assessed with PHP Sniffer and Larastan by running:
  - `composer check`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+(PHPStan is set to Level 9.)
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Original tasks
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Create a console command that generates a ticket with dummy data every minute. A ticket should have the following fields:
+    - Ticket Subject
+    - Ticket Content
+    - Name of the user who submitted the ticket
+    - Email of the user who submitted the ticket
+    - Time when the ticket was added
+    - Status of the ticket (`boolean`) - Set to `false` by default to indicate that the ticket is not processed.
+- Create another console command that processes five tickets every five minutes. Tickets should be processed in chronological order. Changing the status value to true would be considered as processing of the ticket.
+- Create API endpoints that can provide the following functionality:
+    - Return a paginated list of all unprocessed tickets (i.e. all tickets with status set to `false`).
+    - Return a paginated list of all processed tickets (i.e. all tickets with status set to `true`).
+    - Return a paginated list of all tickets that belong to the user with the corresponding email address.
+    - Return the following stats:
+        - total number of tickets in the database
+        - total number of unprocessed tickets in the database
+        - name of the user who submitted the highest number of tickets (count by email)
+        - time when the last processing of a ticket was done.

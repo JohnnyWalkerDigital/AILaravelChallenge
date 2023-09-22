@@ -13,6 +13,8 @@ class TicketsController extends Controller
 {
     public function indexUnprocessed(): LengthAwarePaginator
     {
+        $tickets = Ticket::unprocessed()->oldest()->paginate(5);
+
         return Ticket::unprocessed()->oldest()->paginate(5);
     }
 

@@ -4,6 +4,7 @@ use App\Ticket;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\API\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,18 +26,10 @@ Route::get('/health', function () {
         ->header('Content-Type', 'text/plain');
 });
 
-Route::get('/tickets/unprocessed', function () {
-    return Ticket::unprocessed()->orderBy('created_at', 'asc')->paginate(5);
-});
-
-Route::get('/tickets/processed', function () {
-    return Ticket::processed()->orderBy('created_at', 'asc')->paginate(5);
-});
-
-Route::get('/tickets/user/{email}', function (Request $request) {
-    $user = User::where('email', $request->email)->first();
-    return Ticket::where('user_id', $user->id)->orderBy('created_at', 'asc')->paginate(5);
-});
-
-Route::get('/tickets/stats', function () {
+// All /api/tickets routes
+Route::prefix('tickets')->controller(TicketsController::class)->group(function () {
+    Route::get('/unprocessed','indexUnprocessed');
+    Route::get('/processed','indexProcessed');
+    Route::get('/user/{email}','getTicketsByUser');
+    Route::get('/stats','getStats');
 });

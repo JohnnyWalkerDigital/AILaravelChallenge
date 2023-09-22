@@ -13,9 +13,37 @@ Tests can be run and code assessed with PHP Sniffer and Larastan by running:
 
 (PHPStan is set to Level 9.)
 
+### Custom console commands
+
+Create ticket every every minute:
+
+`php artisan ticket:create --repeat`
+
+Process 5 tickets every five minutes:
+
+`php artisan ticket:process --repeat`
+
+### API Endpoints
+
+Return paginated list of all unprocessed tickets:
+
+`/api/tickets/unprocessed`
+
+Return paginated list of processed tickets:
+
+`/api/tickets/process`
+
+Return paginated list of all tickets belonging to an email address:
+
+`/api/tickets/user/{email}`
+
+Return overall ticket stats:
+
+`/api/tickets/stats`
+
 ---
 
-### Original tasks
+### Original task list
 
 - Create a console command that generates a ticket with dummy data every minute. A ticket should have the following fields:
     - Ticket Subject

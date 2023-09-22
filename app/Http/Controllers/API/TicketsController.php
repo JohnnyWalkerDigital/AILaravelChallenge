@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Services\TicketService;
 use App\Ticket;
 use App\User;
-use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Routing\ResponseFactory;
 
 class TicketsController extends Controller
 {
@@ -23,7 +22,7 @@ class TicketsController extends Controller
         return Ticket::processed()->oldest()->paginate(5);
     }
 
-    public function getTicketsByUser(Request $request): LengthAwarePaginator|ResponseFactory
+    public function getTicketsByUser(Request $request): LengthAwarePaginator|Response
     {
         try {
             $user = User::where('email', $request->email)->firstOrFail();

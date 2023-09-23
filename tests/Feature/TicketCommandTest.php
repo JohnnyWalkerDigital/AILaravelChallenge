@@ -11,7 +11,7 @@ class TicketCommandTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_console_command_creates_tickets()
+    public function test_console_command_creates_tickets(): void
     {
         \Artisan::call('ticket:create');
 
@@ -20,7 +20,7 @@ class TicketCommandTest extends TestCase
         $this->assertTrue($totalTicketsNum === 1);
     }
 
-    public function test_console_command_processes_tickets()
+    public function test_console_command_processes_tickets(): void
     {
         \Artisan::call('ticket:create 25');
         \Artisan::call('ticket:process');

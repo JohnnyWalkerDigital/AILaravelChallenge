@@ -20,7 +20,7 @@ class TicketAPITest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_api_returns_correct_number_of_unprocessed_tickets()
+    public function test_api_returns_correct_number_of_unprocessed_tickets(): void
     {
         // Create unprocessed tickets
         Ticket::factory()->generateUser()->generateUser()->count(10)->create();
@@ -33,7 +33,7 @@ class TicketAPITest extends TestCase
         $response->assertJson(['total' => 10]);
     }
 
-    public function test_api_returns_correct_number_of_processed_tickets()
+    public function test_api_returns_correct_number_of_processed_tickets(): void
     {
         // Create processed tickets
         Ticket::factory()->generateUser()->processed()->count(10)->create();
@@ -46,7 +46,7 @@ class TicketAPITest extends TestCase
         $response->assertJson(['total' => 10]);
     }
 
-    public function test_api_returns_correct_number_of_tickets_for_user()
+    public function test_api_returns_correct_number_of_tickets_for_user(): void
     {
         // Create both processed and unprocessed tickets with various users
         Ticket::factory()->generateUser()->randomStatus()->count(50)->create();
@@ -59,14 +59,14 @@ class TicketAPITest extends TestCase
         $response->assertJson(['total' => 35]);
     }
 
-    public function test_api_returns_correct_response_for_non_user()
+    public function test_api_returns_correct_response_for_non_user(): void
     {
         $response = $this->get('/api/tickets/user/' . 'fake@email.com');
 
         $response->assertStatus(404);
     }
 
-    public function test_api_returns_correct_total_tickets_stat()
+    public function test_api_returns_correct_total_tickets_stat(): void
     {
         // Create unprocessed tickets
         Ticket::factory()->generateUser()->generateUser()->count(15)->create();
@@ -78,7 +78,7 @@ class TicketAPITest extends TestCase
         $response->assertJson(['totalTickets' => 30]);
     }
 
-    public function test_api_returns_correct_user_with_most_tickets_stat()
+    public function test_api_returns_correct_user_with_most_tickets_stat(): void
     {
         // Create unprocessed tickets
         Ticket::factory()->generateUser()->generateUser()->count(15)->create();
@@ -98,7 +98,7 @@ class TicketAPITest extends TestCase
         ]);
     }
 
-    public function test_api_returns_correct_number_of_unprocessed_tickets_stat()
+    public function test_api_returns_correct_number_of_unprocessed_tickets_stat(): void
     {
         // Create unprocessed tickets
         Ticket::factory()->generateUser()->generateUser()->count(25)->create();
@@ -110,7 +110,7 @@ class TicketAPITest extends TestCase
         $response->assertJson(['totalUnprocessedTickets' => 25]);
     }
 
-    public function test_api_returns_correct_last_processed_ticket_time_stat()
+    public function test_api_returns_correct_last_processed_ticket_time_stat(): void
     {
         // Create unprocessed tickets
         Ticket::factory()->generateUser()->generateUser()->count(25)->create();
@@ -128,7 +128,7 @@ class TicketAPITest extends TestCase
         $response->assertJson(['latestProcessedTicketTime' => now()->toISOString()]);
     }
 
-    public function test_api_returns_correct_response_for_last_processed_stat()
+    public function test_api_returns_correct_response_for_last_processed_stat(): void
     {
         $response = $this->get('/api/tickets/stats/');
 

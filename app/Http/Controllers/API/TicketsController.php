@@ -27,7 +27,7 @@ class TicketsController extends Controller
         try {
             $user = User::where('email', $request->email)->firstOrFail();
         } catch (\Exception $e) {
-            return response('Resource not found', 404)
+            return response('Email not found', 404)
                 ->header('Content-Type', 'text/plain');
         }
 

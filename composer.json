@@ -57,7 +57,7 @@
         ]
     },
     "scripts-descriptions": {
-        "check": "Run tests, PHP Code Sniffer and Larastan static analysis against your application."
+        "check": "Run tests, PHP Code Sniffer and Larastan static analysis against your application.",
         "push": "Run @check and then push to default remote repository."
     },
     "extra": {

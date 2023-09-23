@@ -128,7 +128,7 @@ class TicketAPITest extends TestCase
         $response->assertJson(['latestProcessedTicketTime' => now()->toISOString()]);
     }
 
-    public function test_api_returns_correct_response_for_last_processed_stat(): void
+    public function test_api_returns_correct_response_for_missing_last_processed_stat(): void
     {
         $response = $this->get('/api/tickets/stats/');
 

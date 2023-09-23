@@ -33,7 +33,7 @@ Return paginated list of all unprocessed tickets:
 
 Return paginated list of processed tickets:
 
-`/api/tickets/process`
+`/api/tickets/processed`
 
 Return paginated list of all tickets belonging to an email address:
 
